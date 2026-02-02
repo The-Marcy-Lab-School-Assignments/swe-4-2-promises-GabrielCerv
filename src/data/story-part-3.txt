@@ -1,0 +1,1 @@
+One day, Alex discovered Promises. "I promise to resolve your callback hell," the Promise said with a smile.

@@ -1,0 +1,1 @@
+And so, with .then() and .catch(), Alex's code became flat, readable, and lived happily ever after. The End.
