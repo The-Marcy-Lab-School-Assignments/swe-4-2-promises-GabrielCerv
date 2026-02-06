@@ -25,28 +25,6 @@ Explain why deeply nested callbacks (callback hell) are problematic, and describ
 
 Deeply nested callbacks (callback hell) are problematic because they are horrible for interpreting code, lacks in readability causing "The Pyramid of Doom" forcing more work onto a developer. Promise Chaining with `.then()` assists with your code readability by chaining the 
 
-Summary
-Problems with Callback Hell:
-
-Pyramid shape → Code grows horizontally (unreadable)
-Repetitive error handling → if (error) at every level
-Hard to modify → Adding steps requires re-indenting everything
-Variable scope mess → All outer variables leak into inner callbacks
-Debugging nightmare → Anonymous functions in stack traces
-
-How Promises Fix It:
-
-Linear chains → Code grows vertically (readable)
-Single .catch() → One error handler for all steps
-Easy modifications → Just add a new .then() line
-Clean scope → Each .then() has isolated variables
-Better errors → Clear stack traces showing which step failed
-
-The Basketball Analogy:
-
-Callback Hell = Play instructions written sideways with a referee stopping after every pass
-Promise Chain = Play instructions written top-to-bottom with one ref watching the whole sequence
-
 ## Question 3: Error Handling with `.catch()`
 
 If you have a chain of three `.then()` calls followed by a single `.catch()`, and the second `.then()` throws an error, what happens? Why is this behavior useful?
