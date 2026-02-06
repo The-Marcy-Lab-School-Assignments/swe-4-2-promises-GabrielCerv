@@ -12,6 +12,7 @@ Notice how the code keeps indenting further and further right.
 This is hard to read, hard to debug, and hard to maintain.
 */
 const fsCallback = require('fs');
+const { error } = require('console');
 const getStoryCallbackHell = (callback) => {
   fsCallback.readFile(getPath('story-part-1.txt'), 'utf-8', (err, part1) => {
     if (err) { console.error(err); return; }
@@ -41,12 +42,20 @@ const readFileSequentially = () => {
   const storyParts = [];
   return fs.readFile(getPath('story-part-1.txt'), 'utf-8')
     .then((part1) => {
+      storyParts.push(part1);
+      return fs.readFile(getPath('story-part-2.txt'), 'utf-8')
     })
     .then((part2) => {
+      storyParts.push(part2);
+      return fs.readFile(getPath('story-part-3.txt'), 'utf-8')
     })
     .then((part3) => {
+      storyParts.push(part3);
+      return fs.readFile(getPath('story-part-4.txt'), 'utf-8')
     })
     .then((part4) => {
+      storyParts.push(part4);
+      return storyParts.join('\n');
     })
     .catch((err) => {
       console.error(err);
@@ -60,6 +69,19 @@ const readFileSequentially = () => {
 // - Use .then() to join the parts after Promise.all resolves
 // - Don't forget .catch() for error handling!
 const readFilesParallel = () => {
+
+  return Promise.all([
+    fs.readFile(getPath('story-part-1.txt'), 'utf-8'),
+    fs.readFile(getPath('story-part-2.txt'), 'utf-8'),
+    fs.readFile(getPath('story-part-3.txt'), 'utf-8'),
+    fs.readFile(getPath('story-part-4.txt'), 'utf-8')
+  ])
+    .then((resolve) => {
+      return resolve.join('\n')
+    })
+    .catch((error) => {
+      console.error(error)
+    });
 };
 
 module.exports = {

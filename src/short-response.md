@@ -6,6 +6,15 @@ What are the three states of a Promise? For each state, explain what it represen
 
 **Your Answer:**
 
+The three states of a Promise are pending, resolved, and rejected.
+
+Pending - does not run on neither `.then()` or `.catch()`, technically it is waiting so both are not being called to handle. This tends to be because the pending state is normally asynchronous code which waits until the entirety of the synchronous code is executed. 
+
+Resolved - is when the code/operation has succeeded in its results, it utilizes `.then()` to assist with the success values of the code/operations.
+
+Rejected- is when the code/operations has failed. Resulting in a error which uses `.catch()` to judge this decision and executes with an final error value.
+
+
 
 
 ## Question 2: Callback Hell vs. Promise Chaining
@@ -14,11 +23,35 @@ Explain why deeply nested callbacks (callback hell) are problematic, and describ
 
 **Your Answer:**
 
+Deeply nested callbacks (callback hell) are problematic because they are horrible for interpreting code, lacks in readability causing "The Pyramid of Doom" forcing more work onto a developer. Promise Chaining with `.then()` assists with your code readability by chaining the 
 
+Summary
+Problems with Callback Hell:
+
+Pyramid shape → Code grows horizontally (unreadable)
+Repetitive error handling → if (error) at every level
+Hard to modify → Adding steps requires re-indenting everything
+Variable scope mess → All outer variables leak into inner callbacks
+Debugging nightmare → Anonymous functions in stack traces
+
+How Promises Fix It:
+
+Linear chains → Code grows vertically (readable)
+Single .catch() → One error handler for all steps
+Easy modifications → Just add a new .then() line
+Clean scope → Each .then() has isolated variables
+Better errors → Clear stack traces showing which step failed
+
+The Basketball Analogy:
+
+Callback Hell = Play instructions written sideways with a referee stopping after every pass
+Promise Chain = Play instructions written top-to-bottom with one ref watching the whole sequence
 
 ## Question 3: Error Handling with `.catch()`
 
 If you have a chain of three `.then()` calls followed by a single `.catch()`, and the second `.then()` throws an error, what happens? Why is this behavior useful?
 
 **Your Answer:**
+
+
 
